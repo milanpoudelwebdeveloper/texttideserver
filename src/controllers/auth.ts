@@ -19,7 +19,7 @@ export const registerUser = async (req: Request, res: Response) => {
     const hashedPassword = bcrypt.hashSync(password, salt)
     const createdUser = await db.query(createQuery, [name, email, hashedPassword, country])
     if (createdUser) {
-      return res.status(201).json({ message: 'User created successfully' })
+      return res.status(201).json({ message: 'User created successfully. You can login now' })
     } else {
       return res.status(400).json({ message: 'User could not be created. Please try again' })
     }
