@@ -4,6 +4,7 @@ import cors from 'cors'
 import { config } from 'dotenv'
 import compression from 'compression'
 import cookieParser from 'cookie-parser'
+import AuthRoutes from '@routes/auth'
 
 config()
 
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: true }))
 app.get('/ping', (_, res) => {
   res.json({ message: 'pong' })
 })
+app.use('/api/auth', AuthRoutes)
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`)
 })
